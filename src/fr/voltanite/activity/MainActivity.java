@@ -20,6 +20,9 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,8 +57,52 @@ public class MainActivity extends Activity {
 		findViewById(R.id.searchByCode).setOnTouchListener((OnTouchListener)codeSearch);
 		Utils.popDebug(getBaseContext(), LOGINUSR);
 		Utils.popDebug(getBaseContext(), LOGINPWD);
+		
+		ListView listeNom = (ListView) this.findViewById(R.id.mylist);
+        String[] values = new String[] {"Afficher les noeuds de la base de donnée","Scan Anything","continiusQrcode","testLive","testPhp","testJEE","testLogin","testQrcodeSearch"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        		android.R.layout.simple_list_item_1, android.R.id.text1, values);
+        listeNom.setAdapter(adapter); 
+        listeNom.setOnItemClickListener(new ListView.OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				try {
+					if(arg2 == 0){
+						affBDD(View.class);
+					}
+					if(arg2 == 1){
+						scanQuoi(View.class);
+					}
+					if(arg2 == 2){
+						infoQrcode(View.class);
+					}
+					if(arg2 == 3){
+						testPeutLive(View.class);
+					}
+					if(arg2 == 4){
+						testPeutPhp(View.class);
+					}
+					if(arg2 == 5){
+						testPeutJEE(View.class);
+					}
+					if(arg2 == 6){
+						testPeuLogin(View.class);
+					}
+					if(arg2 == 7){
+						testRechercheQrcode(View.class);
+					}
+				}catch (Exception e) {
+        			Toast.makeText(getApplicationContext(), "osef ", 3).show();
+        		}
+			}
+
+        });
 	}
 
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
@@ -91,6 +138,16 @@ public class MainActivity extends Activity {
 			return false;
 		}
 	};
+	
+	/****************************recherceh par qrcode************************/
+	private void testRechercheQrcode(Class<View> class1) {
+		Intent intent = new Intent(getBaseContext(), NodeSearchByCode.class);
+		intent.putExtra(EXTRA_MESSAGE, "/Racine");
+		intent.putExtra(EXTRA_MESSAGE_ID, String.valueOf(id_racine));
+		intent.putExtra("qrCode", "test qrcode");
+		startActivity(intent);
+	}
+
 			
 			
 	private final TextView.OnTouchListener showbdd = new TextView.OnTouchListener() {
@@ -103,6 +160,14 @@ public class MainActivity extends Activity {
 		}
 
 	};
+	/***********************regarde base**********************/
+	private void affBDD(Class<View> class1) {
+		Intent intent = new Intent(getBaseContext(), NodeDisplayActivity.class);
+		intent.putExtra(EXTRA_MESSAGE, "/Racine");
+		intent.putExtra(EXTRA_MESSAGE_ID, String.valueOf(id_racine));
+		startActivity(intent);
+	};
+
 
 	private final TextView.OnTouchListener testPHP = new TextView.OnTouchListener() {
 		public boolean onTouch(View v, MotionEvent event) {
@@ -111,6 +176,12 @@ public class MainActivity extends Activity {
 		}
 
 	};
+	
+	/****************************test liason Php***************************/
+	private void testPeutPhp(Class<View> class1) {
+		jsonTest("http://info-morgane.iut.u-bordeaux1.fr/perso/2012-2013/jmanenti/truc.php");	
+	}
+
 
 	private final TextView.OnTouchListener testJEE = new TextView.OnTouchListener() {
 		public boolean onTouch(View v, MotionEvent event) {
@@ -120,6 +191,12 @@ public class MainActivity extends Activity {
 		}
 
 	};
+	
+	/********************************test peut jee********************/
+	private void testPeutJEE(Class<View> class1) {
+		jsonTest("http://h.n0m.fr:9000/alex/");
+	}
+
 
 	private final TextView.OnTouchListener Login = new TextView.OnTouchListener() {
 		public boolean onTouch(View v, MotionEvent event) {
@@ -131,6 +208,13 @@ public class MainActivity extends Activity {
 		}
 
 	};
+	
+	/**********************test peut login***************************/
+	private void testPeuLogin(Class<View> class1) {
+		Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+		startActivity(intent);
+	}
+
 
 	private final TextView.OnTouchListener testLive = new TextView.OnTouchListener() {
 		public boolean onTouch(View v, MotionEvent event) {
@@ -143,6 +227,13 @@ public class MainActivity extends Activity {
 		}
 
 	};
+	
+	/*****************************************test le live**********************************/
+	private void testPeutLive(Class<View> class1) {
+		Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+		startActivity(intent);
+	}
+
 
 	private final TextView.OnTouchListener continuousQrcode = new TextView.OnTouchListener() {
 		public boolean onTouch(View v, MotionEvent event) {
@@ -153,6 +244,13 @@ public class MainActivity extends Activity {
 		}
 
 	};
+	
+	/*******************************va à rajout information qrcode*******************/
+	private void infoQrcode(Class<View> class1) {
+		Intent intent = new Intent(getBaseContext(), ContinuousQRCodeFatherScan.class);
+		intent.putExtra("FatherCode", "Father QrCode stub");
+		startActivity(intent);
+	}
 
 
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -176,6 +274,15 @@ public class MainActivity extends Activity {
 		}
 
 	};
+
+	/*******************************scanner quelque chose*********************/
+	private void scanQuoi(Class<View> class1) {
+		Intent addqrcode = new Intent(getBaseContext(), AddQRcode.class);
+		String message = "test qrcode";//scanResult.getContents();
+		addqrcode.putExtra(EXTRA_MESSAGE, message);
+		startActivity(addqrcode);  
+	}
+
 
 
 	private void jsonTest (String url){

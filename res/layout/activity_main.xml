@@ -87,4 +87,13 @@
         android:text="testQRCodeSearch" 
          style="@style/CustomTheme" />
     
+    <ListView
+        android:id="@+id/mylist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchByCode"
+        android:textColor="#FFFFFF">
+    </ListView>
+		    		 
+    
 </RelativeLayout>
