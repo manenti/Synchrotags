@@ -15,83 +15,13 @@
         android:textSize="30sp"
         tools:context=".MainActivity" />
 
-    <TextView
-        android:id="@+id/show_base"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"  
-        style="@style/CustomTheme" 
-        android:layout_marginTop="10px"
-        android:text="@string/main_activity_db_display" />
-    <TextView
-        android:id="@+id/qr_code_scanner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/show_base"
-        android:text="@string/main_activity_scan_button" 
-         style="@style/CustomTheme" />
 
-    <TextView
-        android:id="@+id/continuous_scan"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/qr_code_scanner"
-        android:text="continuous qr code" 
-         style="@style/CustomTheme" />
-
-    <TextView
-        android:id="@+id/testLive"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/continuous_scan"
-        android:text="testLive " 
-         style="@style/CustomTheme" />
-
-    <TextView
-        android:id="@+id/testPHP"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/testLive"
-        android:text="testPHP " 
-         style="@style/CustomTheme" />
-    
-    <TextView
-        android:id="@+id/testJEE"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/testPHP"
-        android:text="testJEE " 
-         style="@style/CustomTheme" />
-    
-    <TextView
-        android:id="@+id/testPHP2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/testJEE"
-        android:text="testlogin " 
-         style="@style/CustomTheme" />
-
-    <TextView
-        android:id="@+id/searchByCode"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/testPHP2"
-        android:text="testQRCodeSearch" 
-         style="@style/CustomTheme" />
     
     <ListView
         android:id="@+id/mylist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/searchByCode"
+        android:layout_below="@id/textView1"
         android:textColor="#FFFFFF">
     </ListView>
 		    		 

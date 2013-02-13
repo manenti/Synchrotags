@@ -47,14 +47,14 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		findViewById(R.id.qr_code_scanner).setOnTouchListener((OnTouchListener) scanAnything);
+		/*findViewById(R.id.qr_code_scanner).setOnTouchListener((OnTouchListener) scanAnything);
 		findViewById(R.id.show_base).setOnTouchListener((OnTouchListener)showbdd);
 		findViewById(R.id.continuous_scan).setOnTouchListener((OnTouchListener)continuousQrcode);
 		findViewById(R.id.testPHP).setOnTouchListener((OnTouchListener)testPHP);
 		findViewById(R.id.testLive).setOnTouchListener((OnTouchListener)testLive);
 		findViewById(R.id.testJEE).setOnTouchListener((OnTouchListener)testJEE);
 		findViewById(R.id.testPHP2).setOnTouchListener((OnTouchListener)Login);
-		findViewById(R.id.searchByCode).setOnTouchListener((OnTouchListener)codeSearch);
+		findViewById(R.id.searchByCode).setOnTouchListener((OnTouchListener)codeSearch);*/
 		Utils.popDebug(getBaseContext(), LOGINUSR);
 		Utils.popDebug(getBaseContext(), LOGINPWD);
 		
@@ -127,7 +127,7 @@ public class MainActivity extends Activity {
 		finish();
 	}
 	
-	private final TextView.OnTouchListener codeSearch = new TextView.OnTouchListener()
+	/*private final TextView.OnTouchListener codeSearch = new TextView.OnTouchListener()
 	{
 		public boolean onTouch(View v, MotionEvent event){
 			Intent intent = new Intent(getBaseContext(), NodeSearchByCode.class);
@@ -137,7 +137,7 @@ public class MainActivity extends Activity {
 			startActivity(intent);
 			return false;
 		}
-	};
+	};*/
 	
 	/****************************recherceh par qrcode************************/
 	private void testRechercheQrcode(Class<View> class1) {
@@ -150,7 +150,7 @@ public class MainActivity extends Activity {
 
 			
 			
-	private final TextView.OnTouchListener showbdd = new TextView.OnTouchListener() {
+	/*private final TextView.OnTouchListener showbdd = new TextView.OnTouchListener() {
 		public boolean onTouch(View v, MotionEvent event) {
 			Intent intent = new Intent(getBaseContext(), NodeDisplayActivity.class);
 			intent.putExtra(EXTRA_MESSAGE, "/Racine");
@@ -159,7 +159,7 @@ public class MainActivity extends Activity {
 			return false;
 		}
 
-	};
+	};*/
 	/***********************regarde base**********************/
 	private void affBDD(Class<View> class1) {
 		Intent intent = new Intent(getBaseContext(), NodeDisplayActivity.class);
@@ -169,13 +169,13 @@ public class MainActivity extends Activity {
 	};
 
 
-	private final TextView.OnTouchListener testPHP = new TextView.OnTouchListener() {
+	/*private final TextView.OnTouchListener testPHP = new TextView.OnTouchListener() {
 		public boolean onTouch(View v, MotionEvent event) {
 			jsonTest("http://info-morgane.iut.u-bordeaux1.fr/perso/2012-2013/jmanenti/truc.php");		
 			return false;
 		}
 
-	};
+	};*/
 	
 	/****************************test liason Php***************************/
 	private void testPeutPhp(Class<View> class1) {
@@ -183,14 +183,14 @@ public class MainActivity extends Activity {
 	}
 
 
-	private final TextView.OnTouchListener testJEE = new TextView.OnTouchListener() {
+	/*private final TextView.OnTouchListener testJEE = new TextView.OnTouchListener() {
 		public boolean onTouch(View v, MotionEvent event) {
 			jsonTest("http://h.n0m.fr:9000/alex/");
 //			Utils.popDebug(getBaseContext(), "Not yet.");	
 			return false;
 		}
 
-	};
+	};*/
 	
 	/********************************test peut jee********************/
 	private void testPeutJEE(Class<View> class1) {
@@ -198,7 +198,7 @@ public class MainActivity extends Activity {
 	}
 
 
-	private final TextView.OnTouchListener Login = new TextView.OnTouchListener() {
+	/*private final TextView.OnTouchListener Login = new TextView.OnTouchListener() {
 		public boolean onTouch(View v, MotionEvent event) {
 			//if(LOGINUSR == null && LOGINPWD == null){
 			Intent intent = new Intent(getBaseContext(), LoginActivity.class);
@@ -207,7 +207,7 @@ public class MainActivity extends Activity {
 			return false;
 		}
 
-	};
+	};*/
 	
 	/**********************test peut login***************************/
 	private void testPeuLogin(Class<View> class1) {
@@ -216,7 +216,7 @@ public class MainActivity extends Activity {
 	}
 
 
-	private final TextView.OnTouchListener testLive = new TextView.OnTouchListener() {
+	/*private final TextView.OnTouchListener testLive = new TextView.OnTouchListener() {
 		public boolean onTouch(View v, MotionEvent event) {
 			//IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
 			//integrator.initiateScan();
@@ -226,7 +226,7 @@ public class MainActivity extends Activity {
 			return false;
 		}
 
-	};
+	};*/
 	
 	/*****************************************test le live**********************************/
 	private void testPeutLive(Class<View> class1) {
@@ -235,7 +235,7 @@ public class MainActivity extends Activity {
 	}
 
 
-	private final TextView.OnTouchListener continuousQrcode = new TextView.OnTouchListener() {
+	/*private final TextView.OnTouchListener continuousQrcode = new TextView.OnTouchListener() {
 		public boolean onTouch(View v, MotionEvent event) {
 			Intent intent = new Intent(getBaseContext(), ContinuousQRCodeFatherScan.class);
 			intent.putExtra("FatherCode", "Father QrCode stub");
@@ -243,7 +243,7 @@ public class MainActivity extends Activity {
 			return false;
 		}
 
-	};
+	};*/
 	
 	/*******************************va à rajout information qrcode*******************/
 	private void infoQrcode(Class<View> class1) {
@@ -264,7 +264,7 @@ public class MainActivity extends Activity {
 		// else continue with any other code you need in the method
 	}
 
-	private final TextView.OnTouchListener scanAnything = new TextView.OnTouchListener() {
+	/*private final TextView.OnTouchListener scanAnything = new TextView.OnTouchListener() {
 		public boolean onTouch(View v, MotionEvent event) {
 			Intent addqrcode = new Intent(getBaseContext(), AddQRcode.class);
 			String message = "test qrcode";//scanResult.getContents();
@@ -273,7 +273,7 @@ public class MainActivity extends Activity {
 			return false;
 		}
 
-	};
+	};*/
 
 	/*******************************scanner quelque chose*********************/
 	private void scanQuoi(Class<View> class1) {
